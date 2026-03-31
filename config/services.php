@@ -35,4 +35,9 @@ return [
         ],
     ],
 
+    'video_processor' => [
+        'base_url' => env('VIDEO_PROCESSOR_BASE_URL', 'http://127.0.0.1:8001'),
+        'timeout' => env('VIDEO_PROCESSOR_TIMEOUT', 600),
+    ],
+
 ];

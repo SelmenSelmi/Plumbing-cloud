@@ -12,6 +12,14 @@ Route::inertia('/', 'Welcome', [
 Route::post('/service-requests', [ServiceRequestController::class, 'store'])
     ->name('service-requests.store');
 
+Route::inertia('/videos/upload', 'videos/UploadPage')->name('videos.upload.page');
+Route::inertia('/videos/{id}/processing', 'videos/ProcessingPage')
+    ->whereNumber('id')
+    ->name('videos.processing.page');
+Route::inertia('/videos/{id}/result', 'videos/ResultPage')
+    ->whereNumber('id')
+    ->name('videos.result.page');
+
 Route::middleware(['auth', 'verified', 'admin'])->group(function () {
     Route::get('dashboard', [AdminServiceRequestController::class, 'index'])->name('dashboard');
 });

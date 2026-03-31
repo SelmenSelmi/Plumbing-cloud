@@ -4,6 +4,9 @@ import type { DefineComponent } from 'vue';
 import { createApp, h } from 'vue';
 import '../css/app.css';
 import { initializeTheme } from '@/composables/useAppearance';
+import { Quasar } from 'quasar';
+import 'quasar/dist/quasar.css';
+import '@quasar/extras/material-icons/material-icons.css';
 
 const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
 
@@ -17,6 +20,15 @@ createInertiaApp({
     setup({ el, App, props, plugin }) {
         createApp({ render: () => h(App, props) })
             .use(plugin)
+            .use(Quasar, {
+                config: {
+                    brand: {
+                        primary: '#0f766e',
+                        secondary: '#f97316',
+                        accent: '#155e75',
+                    },
+                },
+            })
             .mount(el);
     },
     progress: {
